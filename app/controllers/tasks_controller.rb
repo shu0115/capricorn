@@ -48,11 +48,9 @@ class TasksController < ApplicationController
       flash[:remote_notice] = 'タスクの作成に失敗しました。'
       redirect_to :action => "index" and return
     end
-
-    params[:category] = @task.category
-
-    @tasks, @search = Task.search( :user_id => session[:user_id], :params => params, :search => params[:search] )
-    redirect_to :action => "index", :search => @search, :category => @task.category, :page => 1 and return
+    
+#    redirect_to :action => "index", :search => @search, :category => @task.category, :page => 1 and return
+    redirect_to :action => "index", :search => @search, :page => 1 and return
   end
 
   #--------#

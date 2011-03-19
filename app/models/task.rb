@@ -29,6 +29,8 @@ class Task < ActiveRecord::Base
     condition_hash = Hash.new
     order = "created_at DESC"
 
+    print "【 args[:search][:category] 】>> " ; p args[:search][:category] ;
+    
     # カテゴリ
     unless args[:search][:category].blank?
       condition_text += " AND category = :category"
