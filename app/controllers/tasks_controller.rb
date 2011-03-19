@@ -50,7 +50,7 @@ class TasksController < ApplicationController
     end
     
 #    redirect_to :action => "index", :search => @search, :category => @task.category, :page => 1 and return
-    redirect_to :action => "index", :search => @search, :page => 1 and return
+    redirect_to :action => "index", :search => @search, :category => params[:search][:category], :page => 1 and return
   end
 
   #--------#
