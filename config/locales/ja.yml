@@ -1,0 +1,62 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ja:
+  # date_select対応
+  date:
+    order:
+    - :year
+    - :month
+    - :day
+
+  # メニュー
+  menu:
+    list: List
+    show: Show
+    edit: Edit
+    delete: Delete
+    new: New
+    top: List
+    entry: Entry
+    public: Public
+    create: 作成
+    update: 更新
+    save: 保存
+    done: 完了
+    undo: 取消
+
+  entry:
+    edit: 変更
+    password: 現在のパスワード
+    edit_password: 変更するパスワード
+    edit_password_confirmation: 変更するパスワード(再入力)
+
+  tasks:
+    number: No.
+    id: ID
+    user_id: ユーザID
+    title: タスク
+    worker: 作業者
+    category: カテゴリ
+    sub_category: サブカテゴリ
+    start_date: 開始日
+    due_date: 期日
+    complete_date: 完了日
+    note: 備考
+    updated_at: 更新日
+    created_at: 作成日
+    status: ステータス
+
+  activerecord:
+    attributes:
+      user:
+        display_name: 表示名
+        level: レベル
+        login_id: ログインID
+        mail_address: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+    errors:
+      template:
+        header: エラー
+        body: ""

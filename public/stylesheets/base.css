@@ -1,0 +1,238 @@
+
+/* --- タグ --- */
+/* 全称セレクタ */
+* {
+  margin: 0px;
+}
+
+/* 全体 */
+body {
+  background-color: #fff;
+  color: #000;
+  padding: 0px;
+}
+
+body, p, ol, ul, td, textarea {
+/*body, td, textarea {*/
+  font-family: monospace, verdana, arial, helvetica, sans-serif;
+  font-size:   14px;
+  line-height: 18px;
+}
+
+/* フォーム */
+form {
+  display: inline;
+}
+
+/* div */
+div {
+  display: inline-block;
+}
+
+/* pre */
+pre {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border: 1px solid #aaa;
+  padding: 15px;
+}
+
+/* テーブル */
+table {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border: 1px solid #aaa;
+  padding: 5px;
+}
+
+th, td {
+  padding: 5px;
+}
+
+/* リンク */
+a {
+  color:#708090;
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+/* --- / タグ --- */
+
+/* --- クラス --- */
+/* ページボックス */
+.page_box {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-box-shadow: 0px 0px 5px #bbb;
+  -webkit-box-shadow: 0px 0px 5px #bbb;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px auto;
+  width: 96%;
+  align: center;
+  display: block;
+}
+
+.page_box .category_box {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border: 1px solid #aaa;
+  padding: 5px 15px 5px 15px;
+  /*width: 95%;*/
+}
+
+.page_contents {
+  width: 100%;
+}
+
+/* リンク */
+.page_contents a {
+  line-height: 12px;
+  margin: 0px 0px 0px 0px;
+  padding: 5px 15px 5px 15px;
+  display: inline-block;
+  background: #fff repeat-x;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid #708090;
+}
+
+.page_contents a:hover {
+  color: #fff;
+  background: #708090 repeat-x;
+  text-decoration: none;
+}
+
+.active_link a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* 入力欄 */
+.input_field input {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid #aaa;
+  width: 200px;
+  padding: 5px;
+}
+
+textarea {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border: 1px solid #aaa;
+  width: 95%;
+  height: 300px;
+  padding: 15px;
+}
+
+/* ヘッダメニュー */
+.header_menu {
+	display: block;
+  text-align: right;
+}
+/* --- / クラス --- */
+
+/* --- ID --- */
+#title {
+  font-family: "Times New Roman", monospace, verdana, arial, helvetica, sans-serif;
+  font-size:   50px;
+  line-height: 50px;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(white));
+  -webkit-text-stroke: 1px #90a0b0;
+  text-align: center;
+  display: block;
+}
+
+#title a {
+  color: #d0e0f0;
+  text-decoration: none;
+}
+/* --- / ID --- */
+
+/* --- ページネーション --- */
+.pagination {
+  padding: 3px;
+  margin: 5px 0px;
+}
+.pagination a {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #708090;
+  text-decoration: none;
+  color: #708090;
+}
+.pagination a:hover, .pagination a:active {
+  border: 1px solid #708090;
+  background-color: #708090;
+  color: #fff;
+  text-decoration: none;
+}
+.pagination span.current {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #708090;
+  font-weight: bold;
+  background-color: #708090;
+  color: #fff;
+}
+.pagination span.disabled {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #eee;
+  color: #ddd;
+}
+/* --- / ページネーション --- */
+
+/* --- エラー --- */
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  /*padding: 7px;*/
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  /*background-color: #f0f0f0;*/
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  /*margin: -7px;*/
+  background-color: #c00;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+/* --- ／ エラー --- */

@@ -1,0 +1,84 @@
+
+<%# ページング %>
+<%= will_paginate @tasks, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index", :search => @search, :category => params[:category] } %>
+
+<p style="color: green"><%= flash[:remote_notice] %></p>
+
+<div class="list_table">
+<table border="0">
+  <tr>
+    <th><%= t("tasks.number") %></th>
+    <th><%= t("tasks.category") %></th>
+    <th><%= t("tasks.title") %></th>
+    <th><%= t("tasks.updated_at") %></th>
+    <th><%= t("tasks.created_at") %></th>
+    <th><%= t("tasks.complete_date") %></th>
+<% if false %>
+    <th><%= t("tasks.id") %></th>
+    <th><%= t("tasks.user_id") %></th>
+    <th><%= t("tasks.worker") %></th>
+    <th><%= t("tasks.sub_category") %></th>
+    <th><%= t("tasks.start_date") %></th>
+    <th><%= t("tasks.due_date") %></th>
+    <th><%= t("tasks.note") %></th>
+    <th><%= t("tasks.status") %></th>
+<% end %>
+  </tr>
+
+<% @tasks.each_with_index do |task, index| %>
+  <% if task.status == "完了" %><% set_class = "done" %><% end %>
+  <tr id="task_<%= task.id %>" class="<%= set_class %>">
+    <td><%=h index + 1 + @tasks.offset %></td>
+    <td><%=h task.category %></td>
+    <% if task.id == params[:edit_id].to_i %>
+      <td>
+        <%# タスク編集 %>
+        <% remote_form_for( :task, :url => { :action => "remote_update", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_submit).disabled=true; $(disable_with_submit).value='#{t('menu.save')}'", :complete => "$(disable_with_submit).disabled=false; $(disable_with_submit).value='#{t('menu.save')}'" ) do |f| %>
+          <%= f.text_field :title, :value => task.title %>
+          <%= f.submit t("menu.save"), :id => "disable_with_submit" %>
+        <% end %>
+      </td>
+    <% else %>
+      <td><%= link_to_remote task.title, :update => "list", :submit => "task_#{task.id}", :url => { :action => 'list', :edit_id => task.id, :search => @search } %></td>
+    <% end %>
+    <td><%=h task.updated_at.strftime("%Y/%m/%d") unless task.updated_at.blank? %></td>
+    <td><%=h task.created_at.strftime("%Y/%m/%d") unless task.created_at.blank? %></td>
+    <td><%=h task.complete_date.strftime("%Y/%m/%d") unless task.complete_date.blank? %></td>
+<% if false %>
+    <td><%=h task.id %></td>
+    <td><%=h task.user_id %></td>
+    <td><%=h task.worker %></td>
+    <td><%=h task.sub_category %></td>
+    <td><%=h task.start_date %></td>
+    <td><%=h task.due_date %></td>
+    <td><%=h task.complete_date %></td>
+    <td><%=h task.note %></td>
+    <td><%=h task.status %></td>
+<% end %>
+    <%# メニューボタン %>
+    <td class="menu"><%= link_to t("menu.show"), :action => "show", :id => task.id, :search => @search %></td>
+    <td class="menu"><%= link_to t("menu.edit"), :action => "edit", :id => task.id, :search => @search %></td>
+    <td class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => task.id, :search => @search, :category => params[:category] }, { :confirm => "「#{task.title}」を削除します。\n本当によろしいですか？", :method => :delete } %></td>
+    <td>
+      <%# 完了／未完了ボタン %>
+      <% unless task.status == "完了" %>
+        <%# ステータス完了 %>
+        <% remote_form_for( :task, :url => { :action => "remote_done", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_button_#{task.id}).disabled=true;", :loaded => "$(disable_with_button_#{task.id}).disabled=false;" ) do |f| %>
+          <%= hidden_field_tag :set_status, "完了" %>
+          <%= f.submit t("menu.done"), :id => "disable_with_button_#{task.id}" %>
+        <% end %>
+      <% else %>
+        <%# ステータス取消 %>
+        <% remote_form_for( :task, :url => { :action => "remote_done", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_button_#{task.id}).disabled=true;", :loaded => "$(disable_with_button_#{task.id}).disabled=false;" ) do |f| %>
+          <%= hidden_field_tag :set_status, "" %>
+          <%= f.submit t("menu.undo"), :id => "disable_with_button_#{task.id}" %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+</div><br />
+
+<%# ページング %>
+<%= will_paginate @tasks, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index", :search => @search } %>

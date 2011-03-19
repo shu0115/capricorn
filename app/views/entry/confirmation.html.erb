@@ -1,0 +1,27 @@
+
+<%# ユーザ情報確認 %>
+<% form_for :user, :url => { :controller => "entry", :action => "complete" } do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.label :login_id, "ログインID" %>：<%= @user.login_id %>
+  <%= f.hidden_field :login_id, :value => @user.login_id %><br />
+
+  <%= f.label :password, "パスワード" %>：<% @user.password.length.times{ |index| %>*<% } %>
+  <%= f.hidden_field :password, :value => @user.password %><br />
+
+  <%= f.label :twitter_id, "Twitter ID" %>：<%= @user.twitter_id %>
+  <%= f.hidden_field :twitter_id, :value => @user.twitter_id %><br />
+  
+  <br />
+
+  <%= f.submit '登録' %>
+<% end %>
+
+<% form_for :user, :url => { :controller => "entry", :action => "input" } do |f| %>
+  <%= f.hidden_field :login_id, :value => @user.login_id %>
+  <%= f.hidden_field :password, :value => @user.password %>
+  <%= f.hidden_field :twitter_id, :value => @user.twitter_id %>
+  <%= f.submit '戻る' %>
+<% end %>
+
+<br />

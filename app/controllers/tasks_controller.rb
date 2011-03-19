@@ -1,0 +1,117 @@
+class TasksController < ApplicationController
+
+  #-------#
+  # index #
+  #-------#
+  def index
+    @tasks, @search = Task.search( :user_id => session[:user_id], :params => params, :search => params[:search] )
+    @task_categorys = Task.categorys( session[:user_id] )
+  end
+
+  #------#
+  # list #
+  #------#
+  def list
+    @tasks, @search = Task.search( :user_id => session[:user_id], :params => params, :search => params[:search] )
+    render :partial => 'list'
+  end
+
+  #------#
+  # show #
+  #------#
+  def show
+    @task = Task.find( params[:id] )
+  end
+
+  #-----#
+  # new #
+  #-----#
+  def new
+    @task = Task.new
+  end
+
+  #------#
+  # edit #
+  #------#
+  def edit
+    @task = Task.find( params[:id] )
+  end
+
+  #--------#
+  # create #
+  #--------#
+  def create
+    @task = Task.new( params[:task] )
+    @task.user_id = session[:user_id]
+
+    unless @task.save
+      flash[:remote_notice] = 'タスクの作成に失敗しました。'
+      redirect_to :action => "index" and return
+    end
+
+    params[:category] = @task.category
+
+    @tasks, @search = Task.search( :user_id => session[:user_id], :params => params, :search => params[:search] )
+    redirect_to :action => "index", :search => @search, :category => @task.category, :page => 1 and return
+  end
+
+  #--------#
+  # update #
+  #--------#
+  def update
+    @task = Task.find( params[:id] )
+
+    if @task.update_attributes( params[:task] )
+      redirect_to :action => "show", :id => @task.id, :search => params[:search] and return
+    else
+      flash[:remote_notice] = 'タスクの更新に失敗しました。'
+      render :action => "edit" and return
+    end
+  end
+
+  #---------------#
+  # remote_update #
+  #---------------#
+  def remote_update
+    @task = Task.find( params[:id] )
+
+    unless @task.update_attributes( params[:task] )
+      flash[:remote_notice] = 'タスクの更新に失敗しました。'
+    end
+
+    @tasks, @search = Task.search( :user_id => session[:user_id], :params => params, :search => params[:search] )
+    render :partial => 'list'
+  end
+
+  #-------------#
+  # remote_done #
+  #-------------#
+  def remote_done
+    @task = Task.find( params[:id] )
+
+    task = Hash.new
+    task[:status] = params[:set_status]
+    task[:complete_date] = Time.now if params[:set_status] == "完了"
+    task[:complete_date] = nil if params[:set_status] == ""
+
+    unless @task.update_attributes( task )
+      flash[:remote_notice] = 'タスクの更新に失敗しました。'
+    end
+
+    @tasks, @search = Task.search( :user_id => session[:user_id], :params => params, :search => params[:search] )
+    render :partial => 'list'
+  end
+
+  #---------#
+  # destroy #
+  #---------#
+  def destroy
+    @task = Task.find( params[:id] )
+
+    unless @task.destroy
+      flash[:remote_notice] = '削除に失敗しました。'
+    end
+
+    redirect_to :action => "index", :search => params[:search], :category => params[:category]
+  end
+end

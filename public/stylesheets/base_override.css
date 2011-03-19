@@ -1,0 +1,55 @@
+
+.category a {
+  margin: 0px 5px 0px 0px;
+}
+
+.input_field_width_100 input {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid #aaa;
+  width: 100px;
+  padding: 5px;
+}
+
+.input_field_width_200 input {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid #aaa;
+  width: 200px;
+  padding: 5px;
+}
+
+.input_field_width_300 input {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid #aaa;
+  width: 300px;
+  padding: 5px;
+}
+
+.done td {
+  background-color: #ddd;
+}
+
+/* リンク */
+.menu a {
+  line-height: 12px;
+  margin: 0px 0px 0px 0px;
+  padding: 5px 15px 5px 15px;
+  display: inline-block;
+  background: #fff repeat-x;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid #708090;
+}
+
+.menu a:hover {
+  color: #fff;
+  background: #708090 repeat-x;
+  text-decoration: none;
+}
+
+/* リストテーブル */
+.list_table table {
+  padding: 15px;
+}

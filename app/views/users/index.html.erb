@@ -1,0 +1,32 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Hashed password</th>
+    <th>Salt</th>
+    <th>Display name</th>
+    <th>Level</th>
+    <th>Twitter</th>
+    <th>Mail address</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%=h user.login_id %></td>
+    <td><%=h user.hashed_password %></td>
+    <td><%=h user.salt %></td>
+    <td><%=h user.display_name %></td>
+    <td><%=h user.level %></td>
+    <td><%=h user.twitter_id %></td>
+    <td><%=h user.mail_address %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user', new_user_path %>

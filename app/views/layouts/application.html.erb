@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Capricorn</title>
+  <%= stylesheet_link_tag 'base' %>
+  <%= stylesheet_link_tag 'base_override' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+
+<body>
+
+<div class="page_box">
+
+<%# ヘッダメニュー %>
+<span class="header_menu">
+  <% if session[:user_id].blank? %>
+  <%# ログイン前 %>
+    <%= link_to "Entry", { :controller => "entry", :action => "input" } %>
+    <% form_tag :controller => "entry", :action => "login" do %>
+      ID:<input type="text" name="login[login_id]" size="15" />
+      PASS:<input type="password" name="login[password]" size="7" />
+      <input type="hidden" name="request_url" value="<%= request.url %>" />
+    <%= submit_tag "ログイン", :disable_with => "ログイン" %>
+    <% end %>
+  <% else %>
+    <%# ログイン後 %>
+    <%= session[:login_id] %>：
+    <%= link_to "Profile", { :controller => "entry", :action => "show", :id => session[:user_id] } %>
+    <% form_tag :controller => "entry", :action => "logout", :method => "put" do %>
+    <input type="hidden" name="request_url" value="<%= request.url %>" />
+      <%= submit_tag "ログアウト", :disable_with => "ログアウト" %>
+      <% end %>
+  <% end %>
+</span>
+
+<%# タイトル %>
+<%= link_to "Top", root_path %>
+<span id="title"><%#= link_to "Capricorn", root_path %></span>
+
+<br />
+<br />
+
+<p style="color: green"><%= notice %></p>
+
+<%= yield %>
+
+<br />
+
+</div>
+
+</body>
+
+</html>

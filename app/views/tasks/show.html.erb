@@ -1,0 +1,54 @@
+<p>
+  <b>User:</b>
+  <%=h @task.user_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @task.title %>
+</p>
+
+<p>
+  <b>Worker:</b>
+  <%=h @task.worker %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @task.category %>
+</p>
+
+<p>
+  <b>Sub category:</b>
+  <%=h @task.sub_category %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%=h @task.start_date %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%=h @task.due_date %>
+</p>
+
+<p>
+  <b>Complete date:</b>
+  <%=h @task.complete_date %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @task.note %>
+</p>
+
+<br />
+
+<%# ページコンテンツ %>
+<div class="page_contents">
+<%= link_to t("menu.top"), :action => "index", :search => params[:search] -%>
+　<%= link_to t("menu.edit"), :action => "edit", :id => @task.id, :search => params[:search] -%>
+</div>
+
+<br />

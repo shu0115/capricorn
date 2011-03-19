@@ -1,0 +1,87 @@
+<!--<h1>Editing task</h1>-->
+
+<% form_for @task, :url => { :action => "update", :id => @task.id, :search => params[:search] } do |f| %>
+  <%= f.error_messages %>
+
+  <div class="input_field">
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+
+  <br />
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <br />
+
+  <p>
+    <%= f.label :worker %><br />
+    <%= f.text_field :worker %>
+  </p>
+
+  <br />
+
+  <p>
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </p>
+
+  <br />
+
+  <p>
+    <%= f.label :sub_category %><br />
+    <%= f.text_field :sub_category %>
+  </p>
+
+  <br />
+
+  <p>
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date, :use_month_numbers => true %>
+  </p>
+
+  <br />
+
+  <p>
+    <%= f.label :due_date %><br />
+    <%= f.date_select :due_date, :use_month_numbers => true %>
+  </p>
+
+  <br />
+
+<% if false %>
+  <p>
+    <%= f.label :complete_date %><br />
+    <%= f.date_select :complete_date, :use_month_numbers => true %>
+  </p>
+<% end %>
+
+  </div><br />
+
+  <br />
+
+  <p>
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </p>
+
+  <br />
+
+  <p>
+    <%= f.submit t("menu.update") %>
+  </p>
+<% end %>
+
+<br />
+
+<%# ページコンテンツ %>
+<div class="page_contents">
+<%= link_to t("menu.top"), :action => "index", :search => params[:search] -%>
+　<%= link_to t("menu.show"), :action => "show", :id => @task.id, :search => params[:search] -%>
+</div>
+
+<br />

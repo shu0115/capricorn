@@ -1,0 +1,38 @@
+<p>
+  <b>Login:</b>
+  <%=h @user.login_id %>
+</p>
+
+<p>
+  <b>Hashed password:</b>
+  <%=h @user.hashed_password %>
+</p>
+
+<p>
+  <b>Salt:</b>
+  <%=h @user.salt %>
+</p>
+
+<p>
+  <b>Display name:</b>
+  <%=h @user.display_name %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%=h @user.level %>
+</p>
+
+<p>
+  <b>Twitter:</b>
+  <%=h @user.twitter_id %>
+</p>
+
+<p>
+  <b>Mail address:</b>
+  <%=h @user.mail_address %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

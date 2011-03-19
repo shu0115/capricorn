@@ -1,0 +1,51 @@
+
+<%# カテゴリ %>
+<div class="category_box category">
+  <%# all %>
+  <% if params[:category].blank? and ( params[:search].blank? or params[:search][:category].blank? ) %>
+    <% set_class_all = "active_link" %>
+  <% end %>
+  <span class="<%= set_class_all %>"><%= link_to "all", { :action => "index", :page => 1 } -%><wbr /></span>
+
+  <%# カテゴリリスト %>
+  <% @task_categorys.each { |task| %>
+    <% if params[:category] == task.category or ( !params[:search].blank? and params[:search][:category] == task.category ) %>
+      <% set_class_category = "active_link" %>
+    <% end %>
+    <span class="<%= set_class_category %>"><%= link_to task.category, { :action => "index", :category => task.category, :page => 1, :search => @search } -%><wbr /></span>
+  <% } %>
+</div>
+
+<br />
+<br />
+
+<%# ステータス %>
+<div class="menu">
+  <%= link_to_remote "全て", :update => "list", :url => { :action => 'list', :status => "全て", :page => 1, :search => @search, :category => params[:category] } %>
+  <%= link_to_remote t("menu.done"), :update => "list", :url => { :action => 'list', :status => "完了", :page => 1, :search => @search, :category => params[:category] } %>
+  <%= link_to_remote "未完了", :update => "list", :url => { :action => 'list', :status => "未完了", :page => 1, :search => @search, :category => params[:category] } %>
+</div>
+
+<br />
+<br />
+
+<%# タスク作成 %>
+<% unless session[:user_id].blank? %>
+  <% form_for( :task, :url => { :action => "create", :search => @search } ) do |f| %>
+  <table>
+    <tr>
+      <td class="input_field_width_100"><%= t("tasks.category") %>：<%= f.text_field :category, :value => params[:category] %></td>
+      <td class="input_field_width_300"><%= t("tasks.title") %>：<%= f.text_field :title %></td>
+      <td><%= f.submit t("menu.create"), :disable_with => t("menu.create") %></td>
+    </tr>
+  </table>
+  <% end %>
+
+<br />
+<% end %>
+
+<div id="list">
+  <%= render :partial => 'list' %>
+</div>
+
+<br />

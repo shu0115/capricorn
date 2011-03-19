@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  title: MyString
+  worker: MyString
+  category: MyString
+  sub_category: MyString
+  start_date: 2011-03-02
+  due_date: 2011-03-02
+  complete_date: 2011-03-02
+  note: MyText
+
+two:
+  user_id: 1
+  title: MyString
+  worker: MyString
+  category: MyString
+  sub_category: MyString
+  start_date: 2011-03-02
+  due_date: 2011-03-02
+  complete_date: 2011-03-02
+  note: MyText

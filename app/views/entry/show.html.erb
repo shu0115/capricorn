@@ -1,0 +1,25 @@
+
+<table>
+  <tr>
+    <td>
+<p>
+  <b>ログインID：</b>
+  <%=h @user.login_id %>
+</p>
+
+<p>
+  <b>Twitter ID：</b>
+  <%=h @user.twitter_id %>
+</p>
+  </td>
+  </tr>
+</table>
+
+<br />
+
+<span class="menu">
+  <%= link_to t("menu.top"), :root %>
+  <%= link_to t("menu.edit"), { :action => "edit", :id => @user.id } %>
+</span>
+
+<br />
