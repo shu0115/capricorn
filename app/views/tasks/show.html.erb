@@ -1,3 +1,5 @@
+
+<% unless @task.blank? %>
 <p>
   <b>User:</b>
   <%=h @task.user_id %>
@@ -50,5 +52,6 @@
 <%= link_to t("menu.top"), :action => "index", :search => params[:search] -%>
 　<%= link_to t("menu.edit"), :action => "edit", :id => @task.id, :search => params[:search] -%>
 </div>
+<% end %>
 
 <br />

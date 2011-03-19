@@ -20,7 +20,7 @@ class TasksController < ApplicationController
   # show #
   #------#
   def show
-    @task = Task.find( params[:id] )
+    @task = Task.find_by_id_and_user_id( params[:id], session[:user_id] )
   end
 
   #-----#
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   # edit #
   #------#
   def edit
-    @task = Task.find( params[:id] )
+    @task = Task.find_by_id_and_user_id( params[:id], session[:user_id] )
   end
 
   #--------#
@@ -59,7 +59,7 @@ class TasksController < ApplicationController
   # update #
   #--------#
   def update
-    @task = Task.find( params[:id] )
+    @task = Task.find_by_id_and_user_id( params[:id], session[:user_id] )
 
     if @task.update_attributes( params[:task] )
       redirect_to :action => "show", :id => @task.id, :search => params[:search] and return
@@ -73,7 +73,7 @@ class TasksController < ApplicationController
   # remote_update #
   #---------------#
   def remote_update
-    @task = Task.find( params[:id] )
+    @task = Task.find_by_id_and_user_id( params[:id], session[:user_id] )
 
     unless @task.update_attributes( params[:task] )
       flash[:remote_notice] = 'タスクの更新に失敗しました。'
@@ -87,7 +87,7 @@ class TasksController < ApplicationController
   # remote_done #
   #-------------#
   def remote_done
-    @task = Task.find( params[:id] )
+    @task = Task.find_by_id_and_user_id( params[:id], session[:user_id] )
 
     task = Hash.new
     task[:status] = params[:set_status]
@@ -106,7 +106,7 @@ class TasksController < ApplicationController
   # destroy #
   #---------#
   def destroy
-    @task = Task.find( params[:id] )
+    @task = Task.find_by_id_and_user_id( params[:id], session[:user_id] )
 
     unless @task.destroy
       flash[:remote_notice] = '削除に失敗しました。'

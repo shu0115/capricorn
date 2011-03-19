@@ -1,4 +1,5 @@
-<!--<h1>Editing task</h1>-->
+
+<% unless @task.blank? %>
 
 <% form_for @task, :url => { :action => "update", :id => @task.id, :search => params[:search] } do |f| %>
   <%= f.error_messages %>
@@ -83,5 +84,6 @@
 <%= link_to t("menu.top"), :action => "index", :search => params[:search] -%>
 　<%= link_to t("menu.show"), :action => "show", :id => @task.id, :search => params[:search] -%>
 </div>
+<% end %>
 
 <br />
