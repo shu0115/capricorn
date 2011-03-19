@@ -33,16 +33,19 @@ class ApplicationController < ActionController::Base
   #--------------#
   def ssl_redirect
     # httpへリダイレクト
-    if Rails.env.production? and request.env["HTTP_X_FORWARDED_PROTO"].to_s == "https" and session[:user_id].blank?
+    if Rails.env.production? and request.env["HTTP_X_FORWARDED_PROTO"].to_s == "https" and ( params[:controller] == "tasks" and params[:action] == "index" ) and session[:user_id].blank?
       request.env["HTTP_X_FORWARDED_PROTO"] = "http"
+      redirect_to request.url and return
+    elsif Rails.env.production? and request.env["HTTP_X_FORWARDED_PROTO"].to_s != "https"
+      request.env["HTTP_X_FORWARDED_PROTO"] = "https"
       redirect_to request.url and return
     end
 
     # httpsへリダイレクト
-    if Rails.env.production? and request.env["HTTP_X_FORWARDED_PROTO"].to_s != "https" and !(session[:user_id].blank?)
-      request.env["HTTP_X_FORWARDED_PROTO"] = "https"
-      redirect_to request.url and return
-    end
+    #    if Rails.env.production? and request.env["HTTP_X_FORWARDED_PROTO"].to_s != "https" and !(session[:user_id].blank?)
+    #  request.env["HTTP_X_FORWARDED_PROTO"] = "https"
+    #  redirect_to request.url and return
+    #end
   end
 
 end
