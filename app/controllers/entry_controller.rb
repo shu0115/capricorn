@@ -58,13 +58,10 @@ class EntryController < ApplicationController
 
 #        flash[:notice] = "ログインに成功しました。<br /><br />"
         redirect_to :root and return
-      else
-        flash[:notice] = "ログインIDもしくはパスワードが正しくありません。<br /><br />"
       end
-    else
-      flash[:notice] = "ログインIDもしくはパスワードが入力されていません。<br /><br />"
     end
 
+    flash[:notice] = "無効なユーザ／パスワードです。<br /><br />"
     redirect_to :root and return
   end
 
@@ -175,16 +172,6 @@ class EntryController < ApplicationController
   end
 
   private
-  #----------------#
-  # password_clear #
-  #----------------#
-  #  def password_clear
-  #  unless params[:user].blank?
-  #    params[:user][:password] = nil
-  #    params[:user][:password_confirmation] = nil
-  #  end
-  #end
-
   #------------------#
   # user_session_set #
   #------------------#
