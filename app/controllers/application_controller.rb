@@ -8,5 +8,42 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
+  # httpsリダイレクト
+  before_filter :ssl_redirect
+
+  # ページング
   $per_page = 10
+
+  # メモ最大数
+  $memo_full = 100
+
+  # ユーザ最大数
+  $user_full = 100
+
+  # ログインプロトコル
+  if Rails.env.production?
+    $login_protocol = "https"
+  else
+    $login_protocol = "http"
+  end
+
+
+  #--------------#
+  # ssl_redirect #
+  #--------------#
+  def ssl_redirect
+    # httpへリダイレクト
+    if Rails.env.production? and session[:user_id].blank?
+      request.env["HTTP_X_FORWARDED_PROTO"] = "http"
+      redirect_to request.url and return
+    end
+
+    # httpsへリダイレクト
+    if Rails.env.production? and !(session[:user_id].blank?)
+      request.env["HTTP_X_FORWARDED_PROTO"] = "https"
+      redirect_to request.url and return
+    end
+  end
+
 end
+  

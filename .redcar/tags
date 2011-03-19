@@ -1,4 +1,4 @@
-1300530993
+1300532440
 AddColumnTasks01	/Users/raisondetre0115/Mine/workspace/capricorn/db/migrate/20110309094251_add_column_tasks01.rb	class AddColumnTasks01 
 ApplicationController	/Users/raisondetre0115/Mine/workspace/capricorn/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/Users/raisondetre0115/Mine/workspace/capricorn/app/helpers/application_helper.rb	module ApplicationHelper
@@ -96,6 +96,7 @@ search	/Users/raisondetre0115/Mine/workspace/capricorn/app/models/task.rb	  def 
 show	/Users/raisondetre0115/Mine/workspace/capricorn/app/controllers/entry_controller.rb	  def show
 show	/Users/raisondetre0115/Mine/workspace/capricorn/app/controllers/tasks_controller.rb	  def show
 show	/Users/raisondetre0115/Mine/workspace/capricorn/app/controllers/users_controller.rb	  def show
+ssl_redirect	/Users/raisondetre0115/Mine/workspace/capricorn/app/controllers/application_controller.rb	  def ssl_redirect
 stripAlpha	/Users/raisondetre0115/Mine/workspace/capricorn/public/javascripts/prototype.js	function stripAlpha(filter)
 test_homepage	/Users/raisondetre0115/Mine/workspace/capricorn/test/performance/browsing_test.rb	  def test_homepage
 toQueryPair	/Users/raisondetre0115/Mine/workspace/capricorn/public/javascripts/prototype.js	function toQueryPair(key, value)
