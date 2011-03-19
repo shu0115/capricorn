@@ -62,7 +62,7 @@
     <td>
       <%# 更新ボタン %>
       <% remote_form_for( :task, :url => { :action => "remote_update", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_update_#{task.id}).disabled=true;", :loaded => "$(disable_with_update_#{task.id}).disabled=false;" ) do |f| %>
-      <%= f.hidden_field :updated_at, { :value => Time.now } %>
+      <%= f.hidden_field :created_at, { :value => Time.now } %>
       <%= f.submit t("menu.update"), :id => "disable_with_update_#{task.id}" %>
       <% end %>
     </td>
