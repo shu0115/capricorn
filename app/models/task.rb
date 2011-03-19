@@ -12,9 +12,6 @@ class Task < ActiveRecord::Base
       :conditions => [ "category IS NOT NULL AND category != '' AND user_id = #{user_id.to_i}" ],
       :select => "DISTINCT category",
       :order => "category ASC"
-
-#    :conditions => [ 'category = :category', { :category => category } ],
-#      :order => "created_at DESC"
     }
   }
 
@@ -30,7 +27,7 @@ class Task < ActiveRecord::Base
 
     condition_text = "user_id = #{args[:user_id].to_i}"
     condition_hash = Hash.new
-    order = "category ASC, created_at DESC, updated_at DESC"
+    order = "created_at DESC, updated_at DESC"
 
     # カテゴリ
     unless args[:search][:category].blank?
