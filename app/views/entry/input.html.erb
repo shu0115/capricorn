@@ -4,28 +4,28 @@
 
   <p>
     <%= f.label :login_id, "*ログインID" %><br />
-    <span class="input_field_width_200"><%= f.text_field :login_id, :value => @user.login_id %></span>
+    <%= f.text_field :login_id, :value => @user.login_id, :class => "input_field_width_200" %>
   </p>
 
   <br />
   
   <p>
     <%= f.label :password, "*パスワード" %><br />
-    <span class="input_field_width_200"><%= f.password_field :password, :value => @user.password %></span>
+    <%= f.password_field :password, :value => @user.password, :class => "input_field_width_200" %>
   </p>
 
   <br />
   
   <p>
     <%= f.label :password_confirmation, "*パスワード確認" %><br />
-    <span class="input_field_width_200"><%= f.password_field :password_confirmation, :value => @user.password_confirmation %></span>
+    <%= f.password_field :password_confirmation, :value => @user.password_confirmation, :class => "input_field_width_200" %>
   </p>
   
   <br />
   
   <p>
     <%= f.label :twitter_id, "Twitter ID" %><br />
-    <span class="input_field_width_200"><%= f.text_field :twitter_id, :value => @user.twitter_id %></span>
+    <%= f.text_field :twitter_id, :value => @user.twitter_id, :class => "input_field_width_200" %>
   </p>
   
   <br />
