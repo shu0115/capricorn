@@ -10,10 +10,10 @@
     <th><%= t("tasks.number") %></th>
     <th><%= t("tasks.category") %></th>
     <th><%= t("tasks.title") %></th>
-    <th><%= t("tasks.updated_at") %></th>
     <th><%= t("tasks.created_at") %></th>
     <th><%= t("tasks.complete_date") %></th>
 <% if false %>
+    <th><%= t("tasks.updated_at") %></th>
     <th><%= t("tasks.id") %></th>
     <th><%= t("tasks.user_id") %></th>
     <th><%= t("tasks.worker") %></th>
@@ -41,10 +41,10 @@
     <% else %>
       <td><%= link_to_remote task.title, :update => "list", :submit => "task_#{task.id}", :url => { :action => 'list', :edit_id => task.id, :search => @search } %></td>
     <% end %>
-    <td><%=h task.updated_at.strftime("%Y/%m/%d") unless task.updated_at.blank? %></td>
     <td><%=h task.created_at.strftime("%Y/%m/%d") unless task.created_at.blank? %></td>
     <td><%=h task.complete_date.strftime("%Y/%m/%d") unless task.complete_date.blank? %></td>
 <% if false %>
+    <td><%=h task.updated_at.strftime("%Y/%m/%d") unless task.updated_at.blank? %></td>
     <td><%=h task.id %></td>
     <td><%=h task.user_id %></td>
     <td><%=h task.worker %></td>
