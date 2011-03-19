@@ -57,7 +57,7 @@ class EntryController < ApplicationController
         user_session_set( user )
 
 #        flash[:notice] = "ログインに成功しました。<br /><br />"
-        redirect_to :root and return
+        redirect_to :root, :protocol => $login_protocol, :only_path => false and return
       end
     end
 
