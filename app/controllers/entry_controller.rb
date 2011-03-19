@@ -46,7 +46,7 @@ class EntryController < ApplicationController
   def login
     @user = User.new( params[:login] )
 
-    return if @user.blank?
+    redirect_to :root if @user.blank?
 
     if !@user.login_id.blank? and !@user.password.blank?
       # ユーザ認証
@@ -56,12 +56,16 @@ class EntryController < ApplicationController
         # ユーザ情報をセッションに格納
         user_session_set( user )
 
-#        flash[:notice] = "ログインに成功しました。"
+#        flash[:notice] = "ログインに成功しました。<br /><br />"
         redirect_to :root and return
       else
-        flash[:notice] = "ログインIDもしくはパスワードが正しくありません。"
+        flash[:notice] = "ログインIDもしくはパスワードが正しくありません。<br /><br />"
       end
+    else
+      flash[:notice] = "ログインIDもしくはパスワードが入力されていません。<br /><br />"
     end
+
+    redirect_to :root and return
   end
 
   #--------#

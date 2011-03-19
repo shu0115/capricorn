@@ -3,7 +3,7 @@
   margin: 0px 5px 0px 0px;
 }
 
-.input_field_width_100 input {
+.input_field_width_100 {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border: 1px solid #aaa;
@@ -11,6 +11,13 @@
   padding: 5px;
 }
 
+.input_field_width_100 input {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid #aaa;
+  width: 100px;
+  padding: 5px;
+}
 .input_field_width_200 input {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
