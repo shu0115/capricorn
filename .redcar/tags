@@ -1,4 +1,4 @@
-1300530782
+1300530993
 AddColumnTasks01	/Users/raisondetre0115/Mine/workspace/capricorn/db/migrate/20110309094251_add_column_tasks01.rb	class AddColumnTasks01 
 ApplicationController	/Users/raisondetre0115/Mine/workspace/capricorn/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/Users/raisondetre0115/Mine/workspace/capricorn/app/helpers/application_helper.rb	module ApplicationHelper
