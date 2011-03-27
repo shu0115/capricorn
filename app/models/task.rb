@@ -27,7 +27,7 @@ class Task < ActiveRecord::Base
 
     condition_text = "user_id = #{args[:user_id].to_i}"
     condition_hash = Hash.new
-    order = "complete_date ASC, created_at DESC"
+    order = "status DESC, created_at DESC, complete_date DESC"
 
     # カテゴリ
     unless args[:search][:category].blank?
