@@ -1,54 +1,63 @@
 
 <% unless @task.blank? %>
+<table border="0">
+
+<% if false %>
 <p>
-  <b>User:</b>
+  <b><%=h t("tasks.user_id") %>:</b>
   <%=h @task.user_id %>
 </p>
+<% end %>
 
+  <tr>
+    <th><%= t("tasks.title") %>:</th>
+    <td><%=h @task.title %></td>
+  </tr>
+  
+<% if false %>
 <p>
-  <b>Title:</b>
-  <%=h @task.title %>
-</p>
-
-<p>
-  <b>Worker:</b>
+  <b><%=h t("tasks.worker") %>:</b>
   <%=h @task.worker %>
 </p>
+<% end %>
 
-<p>
-  <b>Category:</b>
-  <%=h @task.category %>
-</p>
+  <tr>
+    <th><%= t("tasks.category") %>:</th>
+    <td><%=h @task.category %></td>
+  </tr>
 
+<% if false %>
 <p>
-  <b>Sub category:</b>
+  <b><%=h t("tasks.sub_category") %>:</b>
   <%=h @task.sub_category %>
 </p>
+<% end %>
 
-<p>
-  <b>Start date:</b>
-  <%=h @task.start_date %>
-</p>
+  <tr>
+    <th><%= t("tasks.start_date") %>:</th>
+    <td><%=h @task.start_date %></td>
+  </tr>
 
-<p>
-  <b>Due date:</b>
-  <%=h @task.due_date %>
-</p>
+  <tr>
+    <th><%= t("tasks.due_date") %>:</th>
+    <td><%=h @task.due_date %></td>
+  </tr>
 
-<p>
-  <b>Complete date:</b>
-  <%=h @task.complete_date %>
-</p>
+  <tr>
+    <th><%= t("tasks.complete_date") %>:</th>
+    <td><%=h @task.complete_date %></td>
+  </tr>
 
-<p>
-  <b>Note:</b>
-  <%=h @task.note %>
-</p>
+  <tr>
+    <th><%= t("tasks.note") %>:</th>
+    <td><%=h @task.note %></td>
+  </tr>
+
+</table>
 
 <br />
 
-<%# ページコンテンツ %>
-<div class="page_contents">
+<div class="menu">
 <%= link_to t("menu.top"), :action => "index", :search => params[:search] -%>
 　<%= link_to t("menu.edit"), :action => "edit", :id => @task.id, :search => params[:search] -%>
 </div>

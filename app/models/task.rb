@@ -6,7 +6,7 @@ class Task < ActiveRecord::Base
 #    :select => "DISTINCT category",
 #    :order => "category ASC"
 
-  # 検索
+  # カテゴリ取得
   named_scope :categorys, lambda { |user_id|
     { 
       :conditions => [ "category IS NOT NULL AND category != '' AND user_id = #{user_id.to_i}" ],
@@ -27,10 +27,8 @@ class Task < ActiveRecord::Base
 
     condition_text = "user_id = #{args[:user_id].to_i}"
     condition_hash = Hash.new
-    order = "created_at DESC"
+    order = "status ASC, created_at DESC"
 
-    print "【 args[:search][:category] 】>> " ; p args[:search][:category] ;
-    
     # カテゴリ
     unless args[:search][:category].blank?
       condition_text += " AND category = :category"
@@ -43,9 +41,6 @@ class Task < ActiveRecord::Base
     elsif args[:search][:status] == "未完了"
       condition_text += " AND ( status = '' OR status IS NULL )"
     end
-
-    # 先頭の「AND」削除
-#    condition_text = condition_text.sub( "AND", "" )
 
     # 検索
     tasks = Task.paginate(

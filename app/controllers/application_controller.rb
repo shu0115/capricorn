@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
     $login_protocol = "http"
   end
 
-
   #--------------#
   # ssl_redirect #
   #--------------#
