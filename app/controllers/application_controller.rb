@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   before_filter :ssl_redirect
 
   # ページング
-  $per_page = 10
+  $per_page = 30
 
   # メモ最大数
   $memo_full = 100
