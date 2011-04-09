@@ -14,7 +14,7 @@
 <div class="page_box">
 
 <%# ヘッダメニュー %>
-<span class="header_menu">
+<span class="header_menu menu">
   <% if session[:user_id].blank? %>
   <%# ログイン前 %>
     <%= link_to "Entry", { :controller => "entry", :action => "input" } %>
@@ -29,9 +29,9 @@
     <%= session[:login_id] %>：
     <%= link_to "Profile", { :controller => "entry", :action => "show", :id => session[:user_id] } %>
     <% form_tag :controller => "entry", :action => "logout", :method => "put" do %>
-    <input type="hidden" name="request_url" value="<%= request.url %>" />
+      <input type="hidden" name="request_url" value="<%= request.url %>" />
       <%= submit_tag "ログアウト", :disable_with => "ログアウト" %>
-      <% end %>
+    <% end %>
   <% end %>
 </span>
 
@@ -49,10 +49,10 @@
 <br />
 
 <%# フッター %>
-<center>
+<center class="menu">
 Produced by <%= link_to "Clowns Rondo", "http://clowns-rondo.heroku.com/", :target => "_blank" %>
- | <%= link_to "Developer", "http://twitter.com/#!/shu_0115", :target => "_blank" %>
- | <%= link_to "Supporter", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YDYQZ7NS2TXDS", :target => "_blank" %>
+<%= link_to "Developer", "http://twitter.com/#!/shu_0115", :target => "_blank" %>
+<%= link_to "Supporter", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YDYQZ7NS2TXDS", :target => "_blank" %>
 <% unless request.env["HTTP_X_FORWARDED_PROTO"] == "https" %>
 <br /><br />
 <a href="http://twitter.com/share" class="twitter-share-button" data-url="<%= request.url %>" data-text="<%= t("menu.title") %> - #clowns_rondo" data-count="horizontal" data-via="clowns_rondo" data-related="shu_0115:Developer" data-lang="ja">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
