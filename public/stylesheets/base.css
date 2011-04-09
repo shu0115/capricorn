@@ -31,10 +31,12 @@ div {
 
 /* pre */
 pre {
+/*
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border: 1px solid #aaa;
   padding: 15px;
+*/
 }
 
 /* テーブル */

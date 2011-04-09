@@ -31,7 +31,6 @@
   <b><%=h t("tasks.sub_category") %>:</b>
   <%=h @task.sub_category %>
 </p>
-<% end %>
 
   <tr>
     <th><%= t("tasks.start_date") %>:</th>
@@ -42,15 +41,21 @@
     <th><%= t("tasks.due_date") %>:</th>
     <td><%=h @task.due_date %></td>
   </tr>
+<% end %>
+
+  <tr>
+    <th><%= t("tasks.created_at") %>:</th>
+    <td><%=h @task.created_at.strftime("%Y/%m/%d") unless @task.created_at.blank? %></td>
+  </tr>
 
   <tr>
     <th><%= t("tasks.complete_date") %>:</th>
-    <td><%=h @task.complete_date %></td>
+    <td><%=h @task.complete_date.strftime("%Y/%m/%d") unless @task.complete_date.blank? %></td>
   </tr>
 
   <tr>
     <th><%= t("tasks.note") %>:</th>
-    <td><%=h @task.note %></td>
+    <td><pre><%=h @task.note %></pre></td>
   </tr>
 
 </table>
@@ -58,7 +63,7 @@
 <br />
 
 <div class="menu">
-<%= link_to t("menu.top"), :action => "index", :search => params[:search] -%>
+<%= link_to t("menu.top"), :action => "index", :search => params[:search], :category => params[:search][:category] -%>
 　<%= link_to t("menu.edit"), :action => "edit", :id => @task.id, :search => params[:search] -%>
 </div>
 <% end %>

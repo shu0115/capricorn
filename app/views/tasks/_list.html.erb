@@ -34,7 +34,7 @@
       <td>
         <%# タスク編集 %>
         <% remote_form_for( :task, :url => { :action => "remote_update", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_submit).disabled=true; $(disable_with_submit).value='#{t('menu.save')}'", :complete => "$(disable_with_submit).disabled=false; $(disable_with_submit).value='#{t('menu.save')}'" ) do |f| %>
-          <%= f.text_field :title, :value => task.title, :class => "input_field_width_200" %>
+          <%= f.text_field :title, :value => task.title, :class => "input_field_width_300" %>
           <%= f.submit t("menu.save"), :id => "disable_with_submit" %>
         <% end %>
       </td>

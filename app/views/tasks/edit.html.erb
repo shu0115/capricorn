@@ -44,7 +44,6 @@
   </p>
 
   <br />
-<% end %>
 
   <p>
     <%= f.label :start_date, t("tasks.start_date") %><br />
@@ -60,12 +59,16 @@
 
   <br />
 
-<% if false %>
   <p>
     <%= f.label :complete_date %><br />
     <%= f.date_select :complete_date, :use_month_numbers => true %>
   </p>
 <% end %>
+
+  <p>
+    <%= f.label :created_at, t("tasks.created_at") %><br />
+    <%= f.date_select :created_at, :use_month_numbers => true %>
+  </p>
 
   </div><br />
 
@@ -79,7 +82,7 @@
   <br />
 
   <p>
-    <%= f.submit t("menu.update") %>
+    <%= f.submit t("menu.save") %>
   </p>
 <% end %>
 
@@ -87,7 +90,7 @@
 <br />
 
 <div class="menu">
-<%= link_to t("menu.top"), :action => "index", :search => params[:search] -%>
+<%= link_to t("menu.top"), :action => "index", :search => params[:search], :category => params[:search][:category] -%>
 　<%= link_to t("menu.show"), :action => "show", :id => @task.id, :search => params[:search] -%>
 </div>
 <% end %>
