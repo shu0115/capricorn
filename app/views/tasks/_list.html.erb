@@ -39,7 +39,7 @@
         <% end %>
       </td>
     <% else %>
-      <td><%= link_to_remote task.title, :update => "list", :submit => "task_#{task.id}", :url => { :action => 'list', :edit_id => task.id, :search => @search } %></td>
+      <td><%=h link_to_remote task.title, :update => "list", :submit => "task_#{task.id}", :url => { :action => 'list', :edit_id => task.id, :search => @search } %></td>
     <% end %>
     <td><%=h task.created_at.strftime("%Y/%m/%d") unless task.created_at.blank? %></td>
     <td><%=h task.complete_date.strftime("%Y/%m/%d") unless task.complete_date.blank? %></td>
