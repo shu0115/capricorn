@@ -34,8 +34,8 @@
   <% form_for( :task, :url => { :action => "create", :search => @search } ) do |f| %>
   <table>
     <tr>
-      <td><%= t("tasks.category") %>：<%= f.text_field :category, :value => params[:category], :class => "input_field_width_100" %></td>
-      <td><%= t("tasks.title") %>：<%= f.text_field :title, :class => "input_field_width_300" %></td>
+      <td><%=h t("tasks.category") %>：<%= f.text_field :category, :value => params[:category], :class => "input_field_width_100" %></td>
+      <td><%=h t("tasks.title") %>：<%= f.text_field :title, :class => "input_field_width_300" %></td>
       <td><%= f.submit t("menu.create"), :disable_with => t("menu.create") %></td>
     </tr>
   </table>
