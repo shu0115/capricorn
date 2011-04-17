@@ -49,7 +49,8 @@ class TasksController < ApplicationController
       redirect_to :action => "index" and return
     end
     
-    redirect_to :action => "index", :search => @search, :category => params[:search][:category], :page => 1 and return
+#    redirect_to :action => "index", :search => @search, :category => params[:search][:category], :page => 1 and return
+    redirect_to :action => "index", :search => @search, :category => params[:task][:category], :page => 1, :task_status => params[:task_status] and return
   end
 
   #--------#

@@ -57,7 +57,7 @@ th, td {
 
 /* リンク */
 a {
-  color:#708090;
+  color:#90a0b0;
   text-decoration: none;
 }
 
@@ -114,12 +114,12 @@ a:active {
   background: #fff repeat-x;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border: 1px solid #708090;
+  border: 1px solid #90a0b0;
 }
 
 .page_contents a:hover {
   color: #fff;
-  background: #708090 repeat-x;
+  background: #90a0b0 repeat-x;
   text-decoration: none;
 }
 
@@ -178,22 +178,22 @@ textarea {
 .pagination a {
   padding: 2px 5px 2px 5px;
   margin: 2px;
-  border: 1px solid #708090;
+  border: 1px solid #90a0b0;
   text-decoration: none;
-  color: #708090;
+  color: #90a0b0;
 }
 .pagination a:hover, .pagination a:active {
-  border: 1px solid #708090;
-  background-color: #708090;
+  border: 1px solid #90a0b0;
+  background-color: #90a0b0;
   color: #fff;
   text-decoration: none;
 }
 .pagination span.current {
   padding: 2px 5px 2px 5px;
   margin: 2px;
-  border: 1px solid #708090;
+  border: 1px solid #90a0b0;
   font-weight: bold;
-  background-color: #708090;
+  background-color: #90a0b0;
   color: #fff;
 }
 .pagination span.disabled {

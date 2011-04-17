@@ -40,16 +40,22 @@
   background: #fff repeat-x;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border: 1px solid #708090;
+  border: 1px solid #90a0b0;
 }
 
 .menu a:hover {
   color: #fff;
-  background: #708090 repeat-x;
+  background: #90a0b0 repeat-x;
   text-decoration: none;
 }
 
 /* リストテーブル */
 .list_table table {
   padding: 15px;
+}
+
+.now_page a {
+  color: #fff;
+  background: #90a0b0 repeat-x;
+  text-decoration: none;
 }

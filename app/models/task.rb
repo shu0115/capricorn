@@ -23,7 +23,7 @@ class Task < ActiveRecord::Base
     args[:search][:page] = args[:params][:page] unless args[:params][:page].blank?
     args[:search][:page] = 1 if args[:search][:page].blank? or args[:search][:page] == 0
     args[:search][:category] = args[:params][:category] unless args[:params][:category].blank?
-    args[:search][:status] = args[:params][:status] unless args[:params][:status].blank?
+    args[:search][:status] = args[:params][:task_status] unless args[:params][:task_status].blank?
 
     condition_text = "user_id = #{args[:user_id].to_i}"
     condition_hash = Hash.new
