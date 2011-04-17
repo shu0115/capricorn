@@ -1,7 +1,7 @@
 
 <% unless @task.blank? %>
 
-<% form_for @task, :url => { :action => "update", :id => @task.id, :search => params[:search] } do |f| %>
+<% form_for @task, :url => { :action => "update", :id => @task.id, :search => params[:search], :task_status => params[:task_status] } do |f| %>
   <%= f.error_messages %>
 
   <div class="input_field">
@@ -90,8 +90,8 @@
 <br />
 
 <div class="menu">
-<%= link_to t("menu.top"), :action => "index", :search => params[:search], :category => params[:search][:category] -%>
-　<%= link_to t("menu.show"), :action => "show", :id => @task.id, :search => params[:search] -%>
+<%= link_to t("menu.top"), :action => "index", :search => params[:search], :category => params[:search][:category], :task_status => params[:task_status] -%>
+　<%= link_to t("menu.show"), :action => "show", :id => @task.id, :search => params[:search], :task_status => params[:task_status] -%>
 </div>
 <% end %>
 

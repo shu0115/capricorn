@@ -63,8 +63,8 @@
 <br />
 
 <div class="menu">
-<%= link_to t("menu.top"), :action => "index", :search => params[:search], :category => params[:search][:category] -%>
-　<%= link_to t("menu.edit"), :action => "edit", :id => @task.id, :search => params[:search] -%>
+<%= link_to t("menu.top"), :action => "index", :search => params[:search], :category => params[:search][:category], :task_status => params[:task_status] -%>
+　<%= link_to t("menu.edit"), :action => "edit", :id => @task.id, :search => params[:search], :task_status => params[:task_status] -%>
 </div>
 <% end %>
 
