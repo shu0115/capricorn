@@ -39,7 +39,7 @@
 <%# タイトル %>
 <span id="title">
   <%#= link_to t("menu.title"), root_path %>
-  <%= link_to t("menu.title"),{ :controller => "tasks", :status => "未完了" } %>
+  <%= link_to t("menu.title"),{ :controller => "tasks", :task_status => "未完了" } %>
 </span>
 
 <br />
