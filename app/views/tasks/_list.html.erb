@@ -29,7 +29,7 @@
   <% if task.status == "完了" %><% set_class = "done" %><% end %>
   <tr id="task_<%= task.id %>" class="<%= set_class %>">
     <td><%=h index + 1 + @tasks.offset %></td>
-    <td><%=h task.category %></td>
+    <td><%= link_to task.category, { :action => "index", :category => task.category, :page => 1, :search => @search, :task_status => params[:task_status] } -%></td>
     <% if task.id == params[:edit_id].to_i %>
       <td>
         <%# タスク編集 %>
