@@ -31,6 +31,10 @@
   background-color: #ddd;
 }
 
+.hold td {
+  background-color: #eee;
+}
+
 /* リンク */
 .menu a {
   line-height: 12px;

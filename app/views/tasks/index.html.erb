@@ -23,6 +23,7 @@
 <div class="menu">
   <span class="<%= "now_page" if params[:task_status] == "全て" %>"><%= link_to "全て", :action => 'index', :task_status => "全て", :page => 1, :search => @search, :category => params[:category] %></span>
   <span class="<%= "now_page" if params[:task_status] == "完了" %>"><%= link_to t("menu.done"), :action => 'index', :task_status => "完了", :page => 1, :search => @search, :category => params[:category] %></span>
+  <span class="<%= "now_page" if params[:task_status] == "保留" %>"><%= link_to "保留", :action => 'index', :task_status => "保留", :page => 1, :search => @search, :category => params[:category] %></span>
   <span class="<%= "now_page" if params[:task_status] == "未完了" %>"><%= link_to "未完了", :action => 'index', :task_status => "未完了", :page => 1, :search => @search, :category => params[:category] %></span>
 </div>
 

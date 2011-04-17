@@ -39,6 +39,8 @@ class Task < ActiveRecord::Base
     # ステータス
     if args[:search][:status] == "完了"
       condition_text += " AND status = '完了'"
+    elsif args[:search][:status] == "保留"
+      condition_text += " AND status = '保留'"
     elsif args[:search][:status] == "未完了"
       condition_text += " AND ( status = '' OR status IS NULL )"
     end
