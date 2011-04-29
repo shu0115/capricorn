@@ -61,10 +61,6 @@
     <td><%=h task.complete_date %></td>
     <td><%=h task.note %></td>
 <% end %>
-    <%# メニューボタン %>
-    <td align="center" class="menu"><%= link_to t("menu.show"), :action => "show", :id => task.id, :search => @search, :task_status => params[:task_status] %></td>
-    <td align="center" class="menu"><%= link_to t("menu.edit"), :action => "edit", :id => task.id, :search => @search, :task_status => params[:task_status] %></td>
-    <td align="center" class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => task.id, :search => @search, :category => params[:category], :task_status => params[:task_status] }, { :confirm => "「#{task.title}」を削除します。\n本当によろしいですか？", :method => :delete } %></td>
     <td align="center">
       <%# 更新ボタン %>
       <% remote_form_for( :task, :url => { :action => "remote_update", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_update_#{task.id}).disabled=true;", :loaded => "$(disable_with_update_#{task.id}).disabled=false;" ) do |f| %>
@@ -95,6 +91,10 @@
         <% end %>
       <% end %>
     </td>
+    <%# メニューボタン %>
+    <td align="center" class="menu"><%= link_to t("menu.show"), :action => "show", :id => task.id, :search => @search, :task_status => params[:task_status] %></td>
+    <td align="center" class="menu"><%= link_to t("menu.edit"), :action => "edit", :id => task.id, :search => @search, :task_status => params[:task_status] %></td>
+    <td align="center" class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => task.id, :search => @search, :category => params[:category], :task_status => params[:task_status] }, { :confirm => "「#{task.title}」を削除します。\n本当によろしいですか？", :method => :delete } %></td>
   </tr>
 <% end %>
 </table>

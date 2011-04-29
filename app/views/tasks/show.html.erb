@@ -10,6 +10,11 @@
 <% end %>
 
   <tr>
+    <th><%= t("tasks.category") %>:</th>
+    <td><%=h @task.category %></td>
+  </tr>
+
+  <tr>
     <th><%= t("tasks.title") %>:</th>
     <td><%=h @task.title %></td>
   </tr>
@@ -20,11 +25,6 @@
   <%=h @task.worker %>
 </p>
 <% end %>
-
-  <tr>
-    <th><%= t("tasks.category") %>:</th>
-    <td><%=h @task.category %></td>
-  </tr>
 
 <% if false %>
 <p>

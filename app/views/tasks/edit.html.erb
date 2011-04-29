@@ -15,6 +15,13 @@
 <% end %>
 
   <p>
+    <%= f.label :category, t("tasks.category") %><br />
+    <%= f.text_field :category %>
+  </p>
+
+  <br />
+
+  <p>
     <%= f.label :title, t("tasks.title") %><br />
     <%= f.text_field :title %>
   </p>
@@ -29,13 +36,6 @@
 
   <br />
 <% end %>
-
-  <p>
-    <%= f.label :category, t("tasks.category") %><br />
-    <%= f.text_field :category %>
-  </p>
-
-  <br />
 
 <% if false %>
   <p>
