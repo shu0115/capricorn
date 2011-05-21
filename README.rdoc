@@ -1,0 +1,14 @@
+= Capricorn
+
+Task App.
+
+= Heroku Setup
+
+  $ git clone git@github.com:shu0115/capricorn.git
+  $ cd capricorn
+  $ heroku create YOUR-APP-NAME
+  $ git push heroku master
+
+= Copyright
+
+Copyright (c) 2011 Shun Matsumoto.
