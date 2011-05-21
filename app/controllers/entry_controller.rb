@@ -1,5 +1,7 @@
 class EntryController < ApplicationController
 
+#  skip_filter :authorize, :only => [ :login, :input, :confirmation, :complete ]
+
   #-------#
   # input #
   #-------#

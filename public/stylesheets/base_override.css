@@ -63,3 +63,7 @@
   background: #90a0b0 repeat-x;
   text-decoration: none;
 }
+
+.top_line td {
+  border-top: 1px solid #eee;
+}

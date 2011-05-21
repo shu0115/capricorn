@@ -7,13 +7,13 @@
 <div class="list_table">
 <table border="0">
   <tr>
-    <th><%= t("tasks.number") %></th>
     <th><%= t("tasks.category") %></th>
     <th><%= t("tasks.title") %></th>
     <th><%= t("tasks.created_at") %></th>
     <th><%= t("tasks.complete_date") %></th>
     <th><%= t("tasks.status") %></th>
 <% if false %>
+    <th><%= t("tasks.number") %></th>
     <th><%= t("tasks.updated_at") %></th>
     <th><%= t("tasks.id") %></th>
     <th><%= t("tasks.user_id") %></th>
@@ -33,8 +33,7 @@
 
 <% @tasks.each_with_index do |task, index| %>
   <% if task.status == "完了" %><% set_class = "done" %><% elsif task.status == "保留" %><% set_class = "hold" %><% end %>
-  <tr id="task_<%= task.id %>" class="<%= set_class %>">
-    <td><%=h index + 1 + @tasks.offset %></td>
+  <tr id="task_<%= task.id %>" class="top_line <%= set_class %>">
     <td><%= link_to task.category, { :action => "index", :category => task.category, :page => 1, :search => @search, :task_status => params[:task_status] } -%></td>
     <% if task.id == params[:edit_id].to_i %>
       <td>
@@ -51,6 +50,7 @@
     <td><%=h task.complete_date.strftime("%Y/%m/%d") unless task.complete_date.blank? %></td>
     <td align="center"><%=h task.status %></td>
 <% if false %>
+    <td><%=h index + 1 + @tasks.offset %></td>
     <td><%=h task.updated_at.strftime("%Y/%m/%d") unless task.updated_at.blank? %></td>
     <td><%=h task.id %></td>
     <td><%=h task.user_id %></td>
@@ -68,15 +68,26 @@
         <%= f.submit t("menu.update"), :id => "disable_with_update_#{task.id}" %>
       <% end %>
     </td>
+    
     <td align="center">
       <%# 保留ボタン %>
-      <% remote_form_for( :task, :url => { :action => "remote_update", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_hold_#{task.id}).disabled=true;", :loaded => "$(disable_with_hold_#{task.id}).disabled=false;" ) do |f| %>
-        <%= f.hidden_field :status, { :value => "保留" } %>
-        <%= f.submit "保留", :id => "disable_with_hold_#{task.id}" %>
+      <% unless task.status == "保留" %>
+        <%# ステータス保留 %>
+        <% remote_form_for( :task, :url => { :action => "remote_update", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_hold_#{task.id}).disabled=true;", :loaded => "$(disable_with_hold_#{task.id}).disabled=false;" ) do |f| %>
+          <%= f.hidden_field :status, { :value => "保留" } %>
+          <%= f.submit "保留", :id => "disable_with_hold_#{task.id}" %>
+        <% end %>
+      <% else %>
+        <%# ステータス取消 %>
+        <% remote_form_for( :task, :url => { :action => "remote_done", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_hold_#{task.id}).disabled=true;", :loaded => "$(disable_with_hold_#{task.id}).disabled=false;" ) do |f| %>
+          <%= hidden_field_tag :set_status, "" %>
+          <%= f.submit t("menu.undo"), :id => "disable_with_hold_#{task.id}" %>
+        <% end %>
       <% end %>
     </td>
+    
     <td align="center">
-      <%# 完了／未完了ボタン %>
+      <%# 完了ボタン %>
       <% unless task.status == "完了" %>
         <%# ステータス完了 %>
         <% remote_form_for( :task, :url => { :action => "remote_done", :id => task.id, :search => @search }, :update => "list", :success => "reset()", :loading => "$(disable_with_button_#{task.id}).disabled=true;", :loaded => "$(disable_with_button_#{task.id}).disabled=false;" ) do |f| %>
@@ -91,12 +102,27 @@
         <% end %>
       <% end %>
     </td>
+    
     <%# メニューボタン %>
     <td align="center" class="menu"><%= link_to t("menu.show"), :action => "show", :id => task.id, :search => @search, :task_status => params[:task_status] %></td>
     <td align="center" class="menu"><%= link_to t("menu.edit"), :action => "edit", :id => task.id, :search => @search, :task_status => params[:task_status] %></td>
     <td align="center" class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => task.id, :search => @search, :category => params[:category], :task_status => params[:task_status] }, { :confirm => "「#{task.title}」を削除します。\n本当によろしいですか？", :method => :delete } %></td>
   </tr>
 <% end %>
+
+  <tr class="top_line">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 </div><br />
 
