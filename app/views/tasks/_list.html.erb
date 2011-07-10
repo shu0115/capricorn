@@ -104,7 +104,9 @@
     </td>
     
     <%# メニューボタン %>
+    <% if false %>
     <td align="center" class="menu"><%= link_to t("menu.show"), :action => "show", :id => task.id, :search => @search, :task_status => params[:task_status] %></td>
+    <% end %>
     <td align="center" class="menu"><%= link_to t("menu.edit"), :action => "edit", :id => task.id, :search => @search, :task_status => params[:task_status] %></td>
     <td align="center" class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => task.id, :search => @search, :category => params[:category], :task_status => params[:task_status] }, { :confirm => "「#{task.title}」を削除します。\n本当によろしいですか？", :method => :delete } %></td>
   </tr>

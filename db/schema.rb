@@ -9,11 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110309094251) do
+ActiveRecord::Schema.define(:version => 20110710014612) do
 
   create_table "tasks", :force => true do |t|
     t.integer  "user_id"
-    t.string   "title"
+    t.text     "title",         :limit => 255
     t.string   "worker"
     t.string   "category"
     t.string   "sub_category"

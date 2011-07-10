@@ -73,13 +73,15 @@
   </div><br />
 
   <br />
-
+  
+  <% if false %>
   <p>
     <%= f.label :note, t("tasks.note") %><br />
     <%= f.text_area :note %>
   </p>
 
   <br />
+  <% end %>
 
   <p>
     <%= f.submit t("menu.save"), :disable_with => t("menu.save") %>
@@ -91,7 +93,9 @@
 
 <div class="menu">
 <%= link_to t("menu.top"), :action => "index", :search => params[:search], :category => params[:search][:category], :task_status => params[:task_status] -%>
+<% if false %>
 　<%= link_to t("menu.show"), :action => "show", :id => @task.id, :search => params[:search], :task_status => params[:task_status] -%>
+<% end %>
 </div>
 <% end %>
 

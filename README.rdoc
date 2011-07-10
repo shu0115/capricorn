@@ -8,6 +8,8 @@ Task App.
   $ cd capricorn
   $ heroku create YOUR-APP-NAME
   $ git push heroku master
+  $ heroku rake db:migrate
+  $ heroku open
 
 = Copyright
 

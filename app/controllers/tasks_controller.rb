@@ -60,7 +60,7 @@ class TasksController < ApplicationController
     @task = Task.find_by_id_and_user_id( params[:id], session[:user_id] )
 
     if @task.update_attributes( params[:task] )
-      redirect_to :action => "show", :id => @task.id, :search => params[:search], :category => params[:search][:category], :page => params[:page], :task_status => params[:task_status] and return
+      redirect_to :action => "index", :id => @task.id, :search => params[:search], :category => params[:search][:category], :page => params[:page], :task_status => params[:task_status] and return
     else
       flash[:remote_notice] = 'タスクの更新に失敗しました。'
       render :action => "edit" and return
